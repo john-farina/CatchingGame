@@ -103,6 +103,6 @@ body {
         transform: translateY(0%);
     }
     100% {
-        transform: translateY(1050%);
+        transform: translateY(950%);
     }
 }

@@ -136,15 +136,15 @@ function gameLoop() {
 }
 function animationLoop() {
     if (gameEnded === false) {
-        moveCount.innerHTML = `${playerScore} points`;
+        moveCount.innerHTML = `${playerScore} pizzas`;
     } else if (gameEnded === true) {
-        moveCount.innerHTML = `You LOST! with ${playerScore} points`;
+        moveCount.innerHTML = `You LOST! with ${playerScore} pizzas!`;
     }
     updatePlayerMovement();
     updatePlayerStance();
 }
 function startGame() {
-    setInterval(gameLoop, 1000);
+    setInterval(gameLoop, 650);
 }
 function startAnimate() {
     setInterval(animationLoop, 100);
