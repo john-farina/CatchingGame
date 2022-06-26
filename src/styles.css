@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Elektroblooming;
+    src: url(/src/fonts/Elektroblooming.ttf);
+}
+
 :root {
     --containerWidth: 400px;
     --containerHeight: calc(var(--containerWidth) - 110px);
@@ -15,9 +20,12 @@ body {
     align-items: center;
     position: relative;
     touch-action: manipulation;
+    background-color: rgb(66, 66, 66);
 }
 
 #gameContainer {
+    z-index: 2;
+    margin-top: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,14 +33,64 @@ body {
     position: relative;
     width: var(--containerWidth);
     height: var(--containerHeight);
-    background-color: red;
+    background-color: rgb(152, 69, 69);
+}
+#pizzaSign {
+    font-family: Elektroblooming, Courier, monospace;
+    font-size: 100px;
+    z-index: 4;
+    position: absolute;
+    top: 0;
+    margin-top: -100px;
+    color: white;
+}
+#roofContainer {
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    margin-top: -125px;
+    width: calc(var(--containerWidth));
+    height: 70px;
+    border-bottom: 65px solid black;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
 }
 #screenContainer {
+    z-index: 4;
     display: flex;
     gap: 1px;
     width: var(--screenWidth);
     height: var(--screenHeight);
     background-color: gray;
+}
+#screenBackground {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 5;
+    width: var(--screenWidth);
+    height: var(--screenHeight);
+    background-color: rgba(107, 107, 107, 0.3);
+}
+#door {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 60px;
+    height: 100px;
+    border-style: solid;
+    border-width: 3px;
+    border-bottom: 0;
+    border-color: rgb(70, 70, 70);
+}
+#doorKnob {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgb(70, 70, 70);
+    margin-left: 5px;
 }
 
 .screenFragment {
@@ -47,6 +105,7 @@ body {
 }
 
 .player {
+    z-index: 7;
     position: absolute;
     bottom: 0;
     width: 30px;
@@ -54,6 +113,7 @@ body {
 }
 
 .chef {
+    z-index: 7;
     display: none;
     position: absolute;
     top: 0;
@@ -62,6 +122,7 @@ body {
 }
 
 .fallingObject {
+    z-index: 7;
     position: absolute;
     top: 0;
     width: 20px;
