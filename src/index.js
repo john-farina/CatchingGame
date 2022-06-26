@@ -2,14 +2,19 @@ let playerScore = 0;
 let movementState = -1;
 let fallingAnimationTime = 2000;
 let gameEnded = false;
+let faceRight = false;
+let faceLeft = false;
 
 const moveCount = document.querySelector('#moveCount');
 const leftButton = document.querySelector('#leftButton');
 const rightButton = document.querySelector('#rightButton');
+const leftScreenButton = document.querySelector('#leftScreenButton');
+const rightScreenButton = document.querySelector('#rightScreenButton');
 
 const leftCharacter = document.querySelector('#leftCharacter');
 const middleCharacter = document.querySelector('#middleCharacter');
 const rightCharacter = document.querySelector('#rightCharacter');
+const character = document.getElementsByClassName('character');
 
 const leftScreenCont = document.querySelector('#leftScreen');
 const middleScreenCont = document.querySelector('#middleScreen');
@@ -40,10 +45,28 @@ function updatePlayerMovement() {
         showOrHide('show', rightCharacter);
     }
 }
+function updatePlayerStance() {
+    if (faceLeft === true) {
+        leftCharacter.classList.remove('right');
+        middleCharacter.classList.remove('right');
+        rightCharacter.classList.remove('right');
+    } else if (faceRight === true) {
+        leftCharacter.classList.add('right');
+        middleCharacter.classList.add('right');
+        rightCharacter.classList.add('right');
+    }
+}
 
 function dropRightSide() {
+    const randomNum = Math.floor(Math.random() * 2);
     const fallingObj = document.createElement('div');
     fallingObj.classList.add('fallingObject');
+    const pizzaImg = document.createElement('img');
+    pizzaImg.src = '/src/img/pizza.svg';
+    if (randomNum === 0) {
+        pizzaImg.classList.add('right');
+    }
+    fallingObj.appendChild(pizzaImg);
     rightScreenCont.appendChild(fallingObj);
     setTimeout(() => {
         fallingObj.style.display = 'none';
@@ -55,8 +78,15 @@ function dropRightSide() {
     }, fallingAnimationTime);
 }
 function dropMiddle() {
+    const randomNum = Math.floor(Math.random() * 2);
     const fallingObj = document.createElement('div');
     fallingObj.classList.add('fallingObject');
+    const pizzaImg = document.createElement('img');
+    pizzaImg.src = '/src/img/pizza.svg';
+    if (randomNum === 0) {
+        pizzaImg.classList.add('right');
+    }
+    fallingObj.appendChild(pizzaImg);
     middleScreenCont.appendChild(fallingObj);
     setTimeout(() => {
         fallingObj.style.display = 'none';
@@ -68,8 +98,15 @@ function dropMiddle() {
     }, fallingAnimationTime);
 }
 function dropLeftSide() {
+    const randomNum = Math.floor(Math.random() * 2);
     const fallingObj = document.createElement('div');
     fallingObj.classList.add('fallingObject');
+    const pizzaImg = document.createElement('img');
+    pizzaImg.src = '/src/img/pizza.svg';
+    if (randomNum === 0) {
+        pizzaImg.classList.add('right');
+    }
+    fallingObj.appendChild(pizzaImg);
     leftScreenCont.appendChild(fallingObj);
     setTimeout(() => {
         fallingObj.style.display = 'none';
@@ -104,6 +141,7 @@ function animationLoop() {
         moveCount.innerHTML = `You LOST! with ${playerScore} points`;
     }
     updatePlayerMovement();
+    updatePlayerStance();
 }
 function startGame() {
     setInterval(gameLoop, 1000);
@@ -115,6 +153,8 @@ startGame();
 startAnimate();
 
 leftButton.addEventListener('click', function () {
+    faceLeft = true;
+    faceRight = false;
     if (movementState === -1) {
         movementState = 1;
     } else {
@@ -123,6 +163,22 @@ leftButton.addEventListener('click', function () {
 });
 
 rightButton.addEventListener('click', function () {
+    faceLeft = false;
+    faceRight = true;
+    if (movementState === 1) {
+        movementState = -1;
+    } else {
+        movementState = movementState + 1;
+    }
+});
+leftScreenButton.addEventListener('click', () => {
+    if (movementState === -1) {
+        movementState = 1;
+    } else {
+        movementState = movementState - 1;
+    }
+});
+rightScreenButton.addEventListener('click', () => {
     if (movementState === 1) {
         movementState = -1;
     } else {
