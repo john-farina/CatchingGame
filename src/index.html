@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="./public/game.js" defer></script>
+        <link rel="stylesheet" href="./styles.css" />
+    </head>
+    <body>
+        <h1 id="moveCount">0</h1>
+        <div id="gameContainer">
+            <div id="gameScreen">
+                <div class="screenPart" id="leftScreen">
+                    <!-- <div class="fallingObject"></div> -->
+                    <div id="leftCharacter" class="character"></div>
+                </div>
+
+                <div class="screenPart" id="middleScreen">
+                    <div id="middleCharacter" class="character"></div>
+                </div>
+
+                <div class="screenPart" id="rightScreen">
+                    <div id="rightCharacter" class="character"></div>
+                </div>
+            </div>
+            <div id="gameButtons">
+                <button class="moveButton" id="leftButton">LEFT</button>
+                <button class="moveButton" id="rightButton">RIGHT</button>
+            </div>
+        </div>
+    </body>
+</html>

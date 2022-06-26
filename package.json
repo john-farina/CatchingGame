@@ -1,0 +1,24 @@
+{
+    "name": "catchinggame",
+    "version": "1.0.0",
+    "description": "this is a game where u will catch stuff",
+    "main": "index.js",
+    "scripts": {
+        "start": "webpack --watch --config webpack.config.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/onefootfarina/CatchingGame.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/onefootfarina/CatchingGame/issues"
+    },
+    "homepage": "https://github.com/onefootfarina/CatchingGame#readme",
+    "devDependencies": {
+        "webpack": "^5.73.0",
+        "webpack-cli": "^4.10.0"
+    }
+}
